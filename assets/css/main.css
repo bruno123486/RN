@@ -1,0 +1,777 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    background: #000;
+    font-family: 'Montserrat', sans-serif;
+    overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.fix-conteiner {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 150px;
+    background: rgba(0, 0, 0, .90);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 0.5px solid #292217;
+    width: 100%;
+    height: 100px;
+    z-index: 9999;
+}
+
+.cont-logo {
+    display:flex;
+    align-items: center;
+    gap: 5px
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+.logo-desc {
+    font-size: 19px;
+    font-weight: 600;
+    background: linear-gradient(to right, #644813, #D7B14A, #644813);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+    text-decoration: none;
+}
+
+.topicos {
+    display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    color: #A0998D;
+    gap: 40px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.topicos a {
+    text-decoration: none;
+    color: inherit;
+    letter-spacing: 1px;
+    transition: 0.2s
+}
+
+#inicio:hover,
+#servicos:hover,
+#planos:hover,
+#sobre:hover,
+#contato:hover {
+    transform: translateY(-3px);
+    color: #BC8D49;
+
+}
+
+
+
+.fix-conteiner button {
+    width: 150px;
+    height: 40px;
+    background: linear-gradient(to right,#BC8D49, #FDD458, #FDD458, #BC8D49);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.fix-conteiner button:hover {
+    background: linear-gradient(to right,#e29f40, #ffda69, #ffda69, #e29f40);
+}
+
+.contact-txt {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+#overlay {
+    position: fixed;
+    inset: 0;
+    
+    background: rgba(0, 0, 0, 0.55);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 9;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+#overlay.aberto {
+    opacity: 1;
+    visibility: visible;
+}
+
+#div-marc {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(0.85);
+
+    width: 400px;
+    height: 440px;
+    position: fixed;
+    margin-left: 500px;
+    margin-top: 20px;
+    background: #18130E;
+    border: 1px solid #292217;
+    border-radius: 5px;
+    z-index: 10;
+
+    transition: opacity 0.25s ease,
+                transform 0.2s ease,
+                visibility 0.2s;
+}
+
+#div-marc.aberto {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+#div-marc h2 {
+    margin-top: 20px;
+    margin-left: 20px;
+    background: linear-gradient(to right, #8f661a, #D7B14A, #8f661a);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+#div-marc p {
+    margin-top: 10px;
+    margin-left: 20px;
+    color: #c7c4c4;
+    font-size: 12px;
+}
+
+.x-btn {
+    display: flex;
+    gap: 130px
+}
+
+.x-btn i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 17px;
+    color: rgb(187, 180, 180);
+    font-size: 13px;
+    cursor: pointer;
+    width: 27px;
+    height: 27px;
+}
+
+.x-btn i:hover {   
+    border: 1px solid #644813
+}
+
+.div-input {
+    margin-top: 20px;
+    margin-left: 20px;
+    flex-direction: column;
+    display: flex;
+    gap: 10px
+}
+
+.input-name,
+.input-tel {
+    display: flex;
+    flex-direction: column;
+    width: 360px;
+    gap: 5px;
+}
+
+.input-name input,
+.input-tel input {
+    padding: 10px 10px;
+    background: transparent;
+    border: 1px solid #42351c;
+    border-radius: 5px;
+    color: #f3f3f3
+}
+
+.input-name input:focus,
+.input-tel input:focus {
+    border: 1px solid #db9512;
+    outline: none
+}
+
+.input-name label,
+.input-tel label {
+    color: #f3f3f3;
+    font-size: 12px;
+}
+
+.campo-erro {
+    border: 1px solid #c0392b !important;
+}
+
+.div-select {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10px;
+    margin-left:20px;
+    gap: 5px
+}
+
+.div-select label {
+    color: #f3f3f3;
+    font-size: 12px;
+
+}
+
+.div-select select {
+    padding: 10px;
+    width: 360px;
+    background: transparent;
+    border: 1px solid #42351c;
+    border-radius: 5px;
+    outline: none;
+    color: #f3f3f3;
+    font-size: 13px;
+    scrollbar-width: thin;
+    scrollbar-color: #42351c;
+}
+
+
+.div-select select:focus {
+    border: 1px solid #db9512;
+    outline: none
+}
+
+.div-select option {
+    background: #18130E;
+}
+
+.div-time {
+    display: flex;
+    margin-top: 10px;
+    margin-left: 20px;
+    width: 360px;
+    gap: 10px
+}
+
+.div-data,
+.div-horario {
+    display: flex;
+    flex-direction: column;
+    gap: 5px
+}
+
+.div-data label,
+.div-horario label {
+    color: #f3f3f3;
+    font-size: 12px;
+}
+
+.div-data input,
+.div-horario input {
+    padding: 10px 10px;
+    background: transparent;
+    border: 1px solid #42351c;
+    color: #f3f3f3;
+    border-radius: 5px;
+    width: 175px;
+}
+
+.div-data input:focus,
+.div-horario input:focus {
+    border: 1px solid #db9512;
+    outline: none;
+}
+
+.confirm-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, #8f661a, #D7B14A, #8f661a);
+    width: 360px;
+    height: 40px;
+    margin-top: 15px;
+    margin-left: 20px;
+    border: none;
+    border-radius: 5px;
+    cursor:pointer;
+    transition: 0.1s;
+    text-decoration: none;
+}
+
+
+.confirm-btn span {
+    font-size: 14px;
+    font-weight: 500;
+    color:#000
+}
+
+.wpp-fixed {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    margin-top:410px;
+    right: 30px;
+    width: 80px;
+    height: 80px;
+    background: #25d366;
+    border: none;
+    transition: 0.2s;
+    border-radius: 50%;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.wpp-fixed:hover {
+    transform: scale(1.1);
+}
+
+.wpp-fixed i {
+    font-size: 30px;
+    color: black
+}
+
+#conteiner {
+    background-image: url("/RN/templates/images/img-fundo-rn.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 60px 00px;
+    width: 100%;
+    min-height: 600px;
+    backface-visibility: 40%;
+    color: #e0e0e0
+}
+
+.p-desde {
+    position: relative;
+    top: 50px;
+    left: 200px;
+    color: #8b632b;
+    font-weight: 500;
+}
+
+
+.h1-estilo {
+    position: relative;
+    top: 40px;
+    left: 200px;
+    font-size: 70px;
+    font-weight: 800;
+}
+
+.span-desc {
+    background: linear-gradient(to right, #835f1b, #D7B14A, #644813);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+}
+
+.p-ambiente {
+    position: relative;
+    top: 30px;
+    left: 200px;
+    color: #b1a58c;
+    font-size: 17px;
+}
+
+.botoes {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+    top: 70px;
+    left: 200px;
+    background: transparent;
+}
+.p-desde,
+.h1-estilo,
+.p-ambiente,
+.botoes {
+    margin-bottom: 20px;
+}
+
+.social-div {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.marc-btn,
+.wpp-btn {
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.marc-btn {
+    background: linear-gradient(to right,#BC8D49, #FDD458, #FDD458, #BC8D49);
+    border: none;
+}
+
+.marc-btn:hover {
+    background: linear-gradient(to right,#e29f40, #ffda69, #ffda69, #e29f40);
+}
+
+.marc-txt {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.wpp-btn {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    border: 1px solid #BC8D49;
+    border-radius: 4px;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.wpp-btn i {
+    position: relative;
+    left: 30px;
+    font-size: 22px; 
+    color: #BC8D49;
+    padding: 0px
+}
+
+.wpp-btn .wpp-txt {
+    font-family: 'Montserrat', sans-serif; 
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: #BC8D49;
+    position: relative;
+    left: 20px
+}
+
+.wpp-btn:hover {
+    border: 1px solid #e29f40;
+    background: rgba(188, 141, 73, 0.1)
+    
+}
+
+.insta-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.insta-btn i {
+    font-size: 23px;
+    color: #BC8D49;
+    padding: 12px
+}
+
+.insta-btn:hover {
+    background: rgba(188, 141, 73, 0.1);
+}
+
+.insta-btn span {
+    color: #BC8D49;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+#conteiner2 {
+    box-sizing: border-box;
+    width: 100%;
+    min-height: 670px;
+    background: #fff;
+    padding: 60px 200px;
+    background: #0C0806;
+    border-top: 1px solid #292217
+}
+
+.service-div a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #b1840a;
+    letter-spacing: 2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.service-div p {
+    color: #f3f3f3;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.service-div span {
+    background: linear-gradient(to right, #a77a28, #d1a429);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+}
+
+.div-cards {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3,1fr);
+    margin: 50px auto 0;
+    width: 800px;
+    height: 100px;
+    gap: 15px;
+}
+
+.card-head {
+    display: flex;
+    align-items: center;
+    margin: 0px 0px 0;
+}
+
+
+.div-cards i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin: 30px 20px 0;
+    border: 1px solid #835f1b;
+    border-radius: 50%;
+    font-size: 20px;
+    color: #BC8D49;
+}
+
+.div-cards div {
+    width: 360px;
+    height: 230px;
+    background: #18130E;
+    border: 1px solid #2A2318;
+    border-radius: 5px;
+    transition: 0.3s
+}
+
+.div-cards div:hover {
+    background: transparent;
+    border: 1px solid #835f1b
+}
+
+.div-cards h2 {
+    margin-top: 30px;
+    margin-left: 0px;
+    color: #f3f3f3;
+    font-weight: 700;
+    font-size: 20px;;
+    letter-spacing: 0.5px;
+}
+
+.div-cards p {
+    margin-top: 30px;
+    margin-left: 20px;
+    font-size: 13px;
+    color: #aca683;
+    
+}
+
+.div-cards a {
+    display: inline-block;
+    margin-left: 20px;
+    margin-top: 20px;
+    padding: 5px 10px;
+    color: #c48a1e;
+    cursor: pointer;
+    border-radius: 5px;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.div-cards a:hover {
+    background: rgba(188, 141, 73, 0.1);
+}
+
+#conteiner3 {
+    padding: 60px 200px;
+    width: 100%;
+    min-height: 600px;
+    background: #0C0806;
+}
+
+.desc-planos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px
+}
+
+.desc-planos a {
+    font-size: 15px;
+    font-weight: 500;
+    color: #b1840a;
+    letter-spacing: 2px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.desc-planos p {
+    color: #f3f3f3;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.desc-planos span,
+.card-planos span {
+    background: linear-gradient(to right, #a77a28, #d1a429);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+}
+
+.card-planos {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(3,1fr);
+    margin: 50px auto 0;
+    width: 800px;
+    height: 100px;
+    gap: 15px;
+}
+
+.card-planos div {
+    width: 400px;
+    height: 400px;
+    background: #18130E;
+    border: 1px solid #2A2318;
+    border-radius: 5px;
+    transition: 0.3s
+}
+
+.card-planos div:hover {
+    background: transparent;
+    border: 1px solid #835f1b
+}
+
+.card-planos h2 {
+    margin: 40px 30px;
+    color: #f3f3f3
+}
+
+.card-planos p {
+    margin: 10px 30px;
+    color: #afa588;
+    font-size: 13px;
+}
+
+.card-planos ul {
+    display: flex;
+    flex-direction: column;
+    margin: 40px 30px;
+    list-style: none;
+    gap: 14px
+}
+
+.card-planos li {
+    display: flex;
+    font-size: 13px;
+    color: #afa588;
+    gap: 10px
+}
+
+.card-planos i {
+    color: #be8519
+}
+
+.planos-btn1 {
+    position: relative;
+    left: 35px;
+    top: 58px;
+    padding: 10px 130px;
+    background: linear-gradient(to right, #8f661a, #D7B14A, #8f661a);
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 5px
+}
+
+
+.planos-btn {
+    margin-left: 35px;
+    padding: 10px 130px;
+    background: linear-gradient(to right, #8f661a, #D7B14A, #8f661a);
+    text-decoration: none;
+    cursor: pointer;
+    color: black;
+    font-weight: 500;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.planos-btn:hover,
+.planos-btn1:hover {
+    transform: translateY(-1px);
+}
+
+.destaque {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    color: white;
+    background: transparent;
+    transform: translateY(64px);
+}
+
+.destaque header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 140px;
+    height: 25px;
+    background: linear-gradient(to right, #8f661a, #D7B14A, #8f661a);
+    border-radius: 80px;
+}
+
+.destaque p {
+    display: flex;
+    gap: 5px;
+    font-size: 11px;
+    color: black;
+    font-weight: 500;
+}
+
+.destaque i {
+    transform: translateY(2px);
+    font-size: 11px;
+}
+
