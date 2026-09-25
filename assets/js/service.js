@@ -63,7 +63,7 @@ xBtn.addEventListener('click', function(event) {
 confirmar.addEventListener('click', function(event) {
     let formularioValido = true;
 
-    // Verifica o Nome
+
     if (nome.value.trim() === '') {
         nome.classList.add('campo-erro');
         formularioValido = false;
@@ -71,7 +71,7 @@ confirmar.addEventListener('click', function(event) {
         nome.classList.remove('campo-erro');
     }
 
-    // Verifica o Telefone
+  
     if (telefone.value.trim() === '') {
         telefone.classList.add('campo-erro');
         formularioValido = false;
@@ -79,7 +79,7 @@ confirmar.addEventListener('click', function(event) {
         telefone.classList.remove('campo-erro');
     }
 
-    // Verifica o Serviço
+    
     if (Servico.value === '') {
         Servico.classList.add('campo-erro');
         formularioValido = false;
@@ -87,7 +87,7 @@ confirmar.addEventListener('click', function(event) {
         Servico.classList.remove('campo-erro');
     }
 
-    // Verifica a Data
+  
     if (data.value.trim() === '') {
         data.classList.add('campo-erro');
         formularioValido = false;
@@ -95,7 +95,7 @@ confirmar.addEventListener('click', function(event) {
         data.classList.remove('campo-erro');
     }
 
-    // Verifica o Horário
+  
     if (horario.value.trim() === '') {
         horario.classList.add('campo-erro');
         formularioValido = false;
@@ -103,13 +103,13 @@ confirmar.addEventListener('click', function(event) {
         horario.classList.remove('campo-erro');
     }
 
-    // Se tiver algum campo vazio, não abre o WhatsApp
+    
     if (!formularioValido) {
         event.preventDefault();
         return;
     }
 
-    // Monta a mensagem
+   
     const mensagem = `Olá, RN Barbearia! Quero marcar um horário.
 
 Nome: ${nome.value}
@@ -118,13 +118,13 @@ Serviço: ${Servico.value}
 Data: ${data.value}
 Horário: ${horario.value}`;
 
-    // Número do WhatsApp
+   
     const numero = '5515998197611';
 
-    // Cria o link do WhatsApp
+    
     const linkWhatsapp = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
 
-    // Abre o WhatsApp
+  
     window.open(linkWhatsapp, '_blank');
 });
 
@@ -134,13 +134,13 @@ nome.addEventListener('input', function () {
 
 telefone.addEventListener('input', function() {
 
-    // Remove tudo que não for número
+  
     let valor = telefone.value.replace(/\D/g, '');
 
-    // Limita a 11 números
+    
     valor = valor.substring(0, 11);
 
-    // Formata o telefone
+    
     if (valor.length > 0) {
         valor = '(' + valor;
     }

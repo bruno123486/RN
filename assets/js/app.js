@@ -1,4 +1,4 @@
-const botoesMarc = document.querySelectorAll('.fix-conteiner button, .marc-btn');
+const botoesMarc = document.querySelectorAll('.fix-conteiner button:not(#menu-toggle), .marc-btn');
 
 const divMarc = document.querySelector('#div-marc');
 const xBtn = document.querySelector('.x-btn i');
@@ -12,6 +12,9 @@ const Servico = document.querySelector('#Servico');
 const data = document.querySelector('#data');
 const horario = document.querySelector('#horario');
 const obs = document.querySelector('#obs');
+
+const menuToggle = document.querySelector('#menu-toggle');
+const menuMobile = document.querySelector('#menu-mobile');
 
 
 
@@ -60,6 +63,25 @@ xBtn.addEventListener('click', function(event) {
     divMarc.classList.remove('aberto');
     overlay.classList.remove('aberto');
 
+});
+
+menuToggle.addEventListener('click', function(event) {
+    event.stopPropagation();
+    menuMobile.classList.toggle('aberto');
+});
+
+menuMobile.querySelectorAll('a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        menuMobile.classList.remove('aberto');
+    });
+});
+
+document.addEventListener('click', function() {
+    menuMobile.classList.remove('aberto');
+});
+
+menuMobile.addEventListener('click', function(event) {
+    event.stopPropagation();
 });
 
 
