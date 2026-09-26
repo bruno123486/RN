@@ -438,6 +438,7 @@ html {
 .p-ambiente {
     color: #b1a58c;
     font-size: 17px;
+    max-width: 480px;
 }
 
 .botoes {
@@ -609,7 +610,7 @@ html {
 }
 
 .div-cards div {
-    width: 100%;
+    width: 350px;
     min-height: 230px;
     background: #18130E;
     border: 1px solid #2A2318;
@@ -627,7 +628,7 @@ html {
     margin-left: 0px;
     color: #f3f3f3;
     font-weight: 700;
-    font-size: 20px;;
+    font-size: 20px;
     letter-spacing: 0.5px;
 }
 
@@ -705,7 +706,8 @@ html {
     gap: 15px;
 }
 
-.card-planos div {
+.card-planos > div {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -716,7 +718,7 @@ html {
     transition: 0.3s
 }
 
-.card-planos div:hover {
+.card-planos > div:hover {
     background: transparent;
     border: 1px solid #835f1b
 }
@@ -786,36 +788,48 @@ html {
 }
 
 .destaque {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    width: auto;
     color: white;
     background: transparent;
-    transform: translateY(64px);
 }
 
 .destaque header {
     display: flex;
-    justify-content: center;
     align-items: center;
-    width: 140px;
-    height: 25px;
+    justify-content: center;
+    width: auto;
+    height: auto; 
+    padding: 10px 20px; 
     background: linear-gradient(to right, #8f661a, #D7B14A, #8f661a);
-    border-radius: 80px;
+    border-radius: 999px;
+    white-space: nowrap;
 }
 
 .destaque p {
     display: flex;
+    align-items: center;
     gap: 5px;
+    margin: 0; 
+    padding: 0;
+    line-height: 1;
     font-size: 11px;
     color: black;
     font-weight: 500;
 }
 
 .destaque i {
-    transform: translateY(2px);
+    display: flex;
+    align-items: center;
     font-size: 11px;
+    line-height: 1;
+    color: black
 }
 
 
@@ -1565,9 +1579,9 @@ html {
     opacity: 0;
     visibility: hidden;
     transition: 
-            transform 0.4s ease,
-            opacity 0.4s,
-            visivility 0s linear 0.4s;
+            transform 0.3s ease,
+            opacity 0.3s,
+            visivility 0s linear 0.3s;
 }
 
 #menu-mobile.aberto {
@@ -1891,5 +1905,49 @@ html {
 @media (max-width: 700px) {
     .conteiner7-desc p {
         font-size: 26px;
+    }
+}
+
+
+
+
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+
+@media print {
+    .fix-conteiner,
+    #menu-toggle,
+    #menu-mobile,
+    .wpp-fixed,
+    #overlay,
+    #div-marc,
+    #conteiner-max {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+        color: #000 !important;
+    }
+
+    #conteiner,
+    #conteiner2,
+    #conteiner3,
+    #conteiner4,
+    #conteiner5,
+    #conteiner6,
+    #conteiner7,
+    #conteiner-final {
+        background: #fff !important;
+        color: #000 !important;
+        padding: 20px !important;
     }
 }

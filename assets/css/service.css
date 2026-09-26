@@ -21,8 +21,8 @@ html {
     justify-content: center;
     align-items: center;
     position: fixed;
-    margin-top:400px;
-    right: 50px;
+    bottom: 30px;
+    right: 30px;
     width: 80px;
     height: 80px;
     background: #25d366;
@@ -48,12 +48,71 @@ html {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 150px;
+    padding: 0 clamp(20px, 6vw, 150px);
     background: #000;
     border-bottom: 0.5px solid #292217;
     width: 100%;
     height: 100px;
 }
+
+
+
+.menu-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    color: #BC8D49;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+
+#menu-mobile {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 100px;
+    right: 0;
+    width: 200px;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 0.5px solid #292217;
+    padding: 20px clamp(20px, 6vw, 150px);
+    gap: 20px;
+    z-index: 9998;
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: transform 0.3s ease,
+                opacity 0.3s,
+                visibility 0 linear 0.4;
+}
+
+
+#menu-mobile.aberto {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+    transition: transform 0.3s ease,
+                opacity 0.3s,
+                visibility 0s linear 0s;
+
+}
+
+
+#menu-mobile a {
+    text-decoration: none;
+    color: #A0998D;
+    font-size: 13px;
+    letter-spacing: 1px;
+    transition: 0.2s
+}
+
+
+#menu-mobile:hover {
+    color: #BC8D49
+}
+
 
 .cont-logo {
     display:flex;
@@ -153,18 +212,20 @@ html {
 #div-marc {
     opacity: 0;
     visibility: hidden;
-    transform: scale(0.85);
-
     width: 400px;
+    max-width: calc(100vw - 40px);
     height: 440px;
+    max-height: 90vh;
+    overflow: auto;
     position: fixed;
-    margin-left: 500px;
-    margin-top: 20px;
+    top: 50%;
+    left: 50%;
+    margin: 0;
+    transform: translate(-50%, -50%) scale(0.85);
     background: #18130E;
     border: 1px solid #292217;
     border-radius: 5px;
     z-index: 10;
-
     transition: opacity 0.25s ease,
                 transform 0.2s ease,
                 visibility 0.2s;
@@ -173,7 +234,7 @@ html {
 #div-marc.aberto {
     opacity: 1;
     visibility: visible;
-    transform: scale(1);
+    transform: translate(-50%, -50%) scale(1)
 }
 
 #div-marc h2 {
@@ -358,7 +419,7 @@ html {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin: 50px 300px
+    padding: 50px clamp(20px, 8vw, 300px);
 }
 
 
@@ -383,13 +444,12 @@ html {
 }
 
 .div-corte {
-    width: 862px;
+    width: 100%;         
     display: grid;
-    margin: 40px -40px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    margin: 40px 0;       
     gap: 20px;
 }
-
 .img-cortes1,
 .img-cortes2,
 .img-cortes3,
@@ -402,10 +462,10 @@ html {
 .img-cortes10,
 .img-cortes11,
 .img-cortes12 {
-    width: 200px;
-    height: 180px;
-    background: transparent;
-    background-size:cover;
+    width: 100%;          
+    aspect-ratio: 200 / 180; 
+    height: auto;          
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -460,7 +520,7 @@ html {
 
 
 #barba {
-    margin: 150px 300px; 
+    padding: 50px clamp(20px, 8vw, 300px); 
 }
 
 
@@ -485,10 +545,10 @@ html {
 }
 
 .div-barba {
-    width: 662px;
+    width: 100%;         
     display: grid;
-    margin: 40px -40px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    margin: 40px 0;       
     gap: 20px;
 }
 
@@ -499,10 +559,10 @@ html {
 .img-barba5,
 .img-barba6,
 .img-barba7 {
-    width: 200px;
-    height: 180px;
-    background: #fff;
-    background-size:cover;
+    width: 100%;        
+    aspect-ratio: 200 / 180; 
+    height: auto;         
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -537,7 +597,7 @@ html {
 
 
 #sobrancelha {
-    margin: 150px 300px; 
+    padding: 50px clamp(20px, 8vw, 300px);  
 }
 
 
@@ -562,10 +622,10 @@ html {
 }
 
 .div-sobrancelha {
-    width: 662px;
+    width: 100%;        
     display: grid;
-    margin: 40px -40px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    margin: 40px 0;       
     gap: 20px;
 }
 
@@ -573,10 +633,10 @@ html {
 .img-sobrancelha2,
 .img-sobrancelha3,
 .img-sobrancelha4 {
-    width: 200px;
-    height: 180px;
-    background: #fff;
-    background-size:cover;
+    width: 100%;          
+    aspect-ratio: 200 / 180; 
+    height: auto;         
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -599,7 +659,7 @@ html {
 
 
 #freestyle {
-    margin: 50px 300px
+    padding: 50px clamp(20px, 8vw, 300px); 
 }
 
 
@@ -624,11 +684,11 @@ html {
 }
 
 .div-freestyle {
-    width: 662px;
+    width: 100%;         
     display: grid;
-    margin: 40px -40px;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 20px
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    margin: 40px 0;       
+    gap: 20px;
 }
 
 .img-freestyle1,
@@ -640,10 +700,10 @@ html {
 .img-freestyle7,
 .img-freestyle8,
 .img-freestyle9 {
-    width: 200px;
-    height: 180px;
-    background: transparent;
-    background-size:cover;
+    width: 100%;        
+    aspect-ratio: 200 / 180; 
+    height: auto;          
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -686,7 +746,7 @@ html {
 
 
 #platinado {
-    margin: 150px 300px; 
+    padding: 50px clamp(20px, 8vw, 300px); 
 }
 
 
@@ -711,20 +771,20 @@ html {
 }
 
 .div-platinado {
-    width: 662px;
+    width: 100%;        
     display: grid;
-    margin: 40px -40px;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    margin: 40px 0;       
     gap: 20px;
 }
 
 .img-platinado1,
 .img-platinado2,
 .img-platinado3 {
-    width: 200px;
-    height: 180px;
-    background: #fff;
-    background-size:cover;
+    width: 100%;          
+    aspect-ratio: 200 / 180; 
+    height: auto;         
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -747,6 +807,7 @@ html {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    padding: 40px clamp( 20px, 8vw, 100px);
     color: #f3f3f3;
     border-top: 1px solid #292217;
 }
@@ -851,3 +912,76 @@ html {
     color:#BC8D49
 }
 
+
+
+
+/* !!!!!!!!!!RESPONSIVIDADE!!!!!!!!!*/
+
+
+@media (max-width: 900px) {
+    .fix-conteiner {
+        padding: 0 clamp(20px, 6vw, 150px);
+    }
+
+    .topicos {
+        display: none;
+    }
+
+    .fix-conteiner button:not(.menu-toggle) {
+        display: none;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .logo {
+        width: 45px;
+        height: 45px;
+    }
+
+    .logo-desc {
+        font-size: 15px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .input-name,
+    .input-tel,
+    .div-select select,
+    .confirm-btn,
+    .div-time {
+        width: 100%;
+    }
+}
+
+
+@media (max-width: 600px) {
+    #cortes h1,
+    #barba h1,
+    #sobrancelha h1,
+    #freestyle h1,
+    #platinado h1 {
+        font-size: 28px;
+    }
+}
+
+
+
+@media (max-width: 500px) {
+    .marc-btn {
+        padding: 15px 40px;
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .wpp-btn,
+    .insta-btn {
+        padding: 15px 40px;
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+    }
+}
